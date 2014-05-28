@@ -1,8 +1,8 @@
-# Try Yii2 with Vagrant VM + Ansible provisioning
+## Try Yii2 with Vagrant VM + Ansible provisioning
 
 > Tested on Ubuntu Linux host machine
 
-# Out of the box...
+## Out of the box...
 
 * Ubuntu 14.04 64 bit ( + bulk of system soft like `mc`, `curl`, etc.)
 * PHP-FPM 5.5 ( + modules `intl`, `gd`, `xdebug` etc.)
@@ -15,9 +15,9 @@
 * And of course Yii2 Advanced Project template imported
 * Local IP loop on Host machine `/etc/hosts` and Virtual hosts in Nginx already set up too !
 
-# Quick start
+## Quick start
 
-## Install
+### Install
 
 * [Virtualbox 4.3+](https://www.virtualbox.org/) + VirtualBox Extension Pack
 *  [Vagrant 1.6+](http://www.vagrantup.com/)
@@ -29,13 +29,13 @@ additional Vagrant modules (optional, but provide full automation) :
 
 * [Ansible 1.6+](http://docs.ansible.com/intro_installation.html)
 
-## RUN
+### RUN
 
 * Clone this sources from Git
 * Run `vagrant up`.
 * It will start VM creation and Provisioning. Could take some time 15-30 min... Drink coffee and get back for complete virtual server with Yi2 project ready for play !
 
-## PLAY
+### PLAY
 
 Ok, now if everything went fine you can access these Urls in your browser
 
@@ -45,7 +45,7 @@ Ok, now if everything went fine you can access these Urls in your browser
 
 * Gii code generator should be called like this [http://yii2.local/index.php?r=gii](http://yii2.local/index.php?r=gii)
 
-## Let's make something
+### Let's make something
 
 * [Go to Gii](http://yii2.local/index.php?r=gii)
 * [Go to Model Generator](http://yii2.local/index.php?r=gii/default/view&id=model)
@@ -74,14 +74,14 @@ Press - Preview and then Generate
 * Continue playing with other Models, modify code (on your host machine in folder `.../try-yii2/yii2-app-advanced`) make relations between Models etc. Whatever you wish!
 
 
-# Getting deeper ...
+## Getting deeper ...
 
 * In `try-yii2` folder run `vagrant ssh` to access virtual dev server via SSH. You can modify and setup additionally anything you want.
 * Or modify Ansible provisioning YML files (if you are familiar with it) and run `vagrant provision` to update server config (WARNING! I can't guarantee that your changes will not be overwritten!)
 
-# TODO :
+## TODO :
 
-### Complete Ansible provisioning scripts for all software stack Yii2 works out of the box
+#### Complete Ansible provisioning scripts for all software stack Yii2 works out of the box
 
 * MongoDB
 * PostgreSQL
@@ -93,6 +93,6 @@ Press - Preview and then Generate
 * Elastic Search
 * CUBRID
 
-### Make option for yii-basic-template checkout
+#### Make option for yii-basic-template checkout
 
-## Made by [Evgeniy Kuzminov](http://stdout.in). Thanks for support to [Anton Logvinenko](http://anton.logvinenko.name/).
+### Made by [Evgeniy Kuzminov](http://stdout.in). Thanks for support to [Anton Logvinenko](http://anton.logvinenko.name/).
