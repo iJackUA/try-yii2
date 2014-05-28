@@ -1,0 +1,35 @@
+- name: download Redis
+  shell: creates=/tmp/redis-{{ redis_version }} wget -O - http://download.redis.io/releases/redis-{{ redis_version }}.tar.gz | tar -xz -C /tmp
+  tags: redis
+
+- name: ensure required packages are installed
+  apt: pkg={{ item }} state=present
+  with_items:
+    - make
+    - gcc
+    - g++
+  tags: redis
+
+- name: install Redis
+  command: creates=/usr/local/bin/redis-server chdir=/tmp/redis-{{ redis_version }} make install
+  tags: redis
+
+- name: create user redis
+  user: name=redis system=yes home=/var/lib/redis shell=/bin/false
+  tags: redis
+
+- name: create Redis config
+  shell: creates=/etc/redis/redis.conf mkdir /etc/redis && mkdir /var/log/redis/ -p && chown redis:redis  /var/log/redis/ -Rf /etc/redis -Rf
+  tags: redis
+
+- name: copy Redis config
+  template: src=redis.conf.j2 dest=/etc/redis/redis.conf owner=redis group=redis mode=0644
+  tags: redis
+
+- name: configure Upstart for Redis
+  template: src=upstart_redis.conf.j2 dest=/etc/init/redis.conf
+  tags: redis
+
+- name: ensure Redis is running and enabled
+  service: name=redis state=running enabled=yes
+  tags: redis

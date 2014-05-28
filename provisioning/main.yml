@@ -1,0 +1,16 @@
+---
+- hosts: vagrant
+  sudo: true
+
+  roles:
+    - initial
+    - common
+    - nginx
+    - php
+    - composer
+    - phpredis
+    - redis
+    - mysql
+    - phpmyadmin
+    - yii-advanced-project
+    - sakila-db

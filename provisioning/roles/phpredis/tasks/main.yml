@@ -1,0 +1,19 @@
+- name: download PhpRedis
+  shell: chdir=/tmp creates=/tmp/phpredis.zip wget https://github.com/nicolasff/phpredis/zipball/master -O phpredis.zip
+
+- name: compile PhpRedis
+  shell: chdir=/tmp creates=/tmp/nicolasff-phpredis/modules/redis.so unzip /tmp/phpredis.zip && mv /tmp/nicolasff-phpredis-* /tmp/nicolasff-phpredis && cd /tmp/nicolasff-phpredis && phpize && ./configure && make && make install
+
+- name: detect minor php version
+  shell: chdir=/tmp php -v | grep -Eow '^PHP [^ ]+'| awk '{ print $2 }'| awk -F '.' '{print $2}'
+  register: minor_php_version
+
+- name: install PhpRedis for php 5.5 and greater
+  shell: creates=/etc/php5/mods-available/redis.ini touch /etc/php5/mods-available/redis.ini && echo extension=redis.so > /etc/php5/mods-available/redis.ini && ln -s /etc/php5/mods-available/redis.ini /etc/php5/fpm/conf.d && ln -s /etc/php5/mods-available/redis.ini /etc/php5/cli/conf.d
+  when: minor_php_version.stdout|int >= 5
+
+- name: install PhpRedis for php lower than 5.5 (5.3 - 5.4)
+  shell: creates=/etc/php5/conf.d/redis.ini touch /etc/php5/conf.d/redis.ini && echo extension=redis.so > /etc/php5/conf.d/redis.ini
+  when: minor_php_version.stdout|int < 5
+  notify:
+    - restart phpfpm

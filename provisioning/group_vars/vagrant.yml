@@ -1,0 +1,21 @@
+hostname: try.yii2
+
+php_error_reporting: E_ALL
+php_display_errors: On
+php_upload_max_filesize: 20M
+php_post_max_size: 25M
+
+mysql_root_user: root
+mysql_root_pass: root
+mysql_user: yii
+mysql_pass: yii
+mysql_db: sakila
+mysql_bind_address: 0.0.0.0  # Allows all connections, for Production it should be 127.0.0.1
+mysql_key_buffer: 64M
+
+vhosts:
+  [
+    { name: 'yii2.local', rootFolder: '/var/www/yii2-app-advanced/frontend/web'},
+    { name: 'admin.yii2.local', rootFolder: '/var/www/yii2-app-advanced/backend/web'},
+    { name: 'phpmyadmin.yii2.local', rootFolder: '/usr/share/phpmyadmin'}
+  ]

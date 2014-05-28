@@ -1,0 +1,28 @@
+- name: ensure PHP installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - php5-fpm
+    - php5-dev
+    - php5-cli
+    - php5-intl
+    - php5-json
+    - php5-pgsql
+    - php5-mysql
+    - php5-sqlite
+    - php5-curl
+    - php5-gd
+    - php5-mcrypt
+    - php5-xdebug
+  tags: php
+
+- name: configure PHP settings
+  template: src=php.ini dest=/etc/php5/fpm/conf.d/custom.ini
+  notify:
+    - restart phpfpm
+  tags: php
+
+- name: configure PHP-FPM Pool settings
+  template: src=www-pool.conf dest=/etc/php5/fpm/pool.d/www.conf
+  notify:
+    - restart phpfpm
+  tags: php

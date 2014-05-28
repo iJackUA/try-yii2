@@ -1,0 +1,6 @@
+---
+- name: import sakila database
+  mysql_db: name={{ mysql_db }} state=import target={{ item }}
+  with_items :
+    - /tmp/sakila-db/sakila-schema.sql
+    - /tmp/sakila-db/sakila-data.sql

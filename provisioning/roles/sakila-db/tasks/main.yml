@@ -1,0 +1,12 @@
+---
+- name: download Sakila DB archive
+  shell: wget http://downloads.mysql.com/docs/sakila-db.zip -O /tmp/sakila-db.zip creates=/tmp/sakila-db.zip
+  register: sakila_downloaded
+
+- name: unzip Sakila DB archive
+  command: unzip /tmp/sakila-db.zip -d /tmp
+  when: sakila_downloaded.changed
+
+- name: create MySQL DB for Sakila
+  mysql_db: name={{ mysql_db }} encoding=utf8 state=present
+  notify: import sakila database

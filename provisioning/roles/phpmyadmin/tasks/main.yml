@@ -1,0 +1,5 @@
+- name: ensure PhpMyAdmin installed
+  apt: pkg=phpmyadmin state=present
+  tags: phpmyadmin
+  notify:
+    - restart phpfpm
