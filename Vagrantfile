@@ -73,23 +73,29 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     if Vagrant.has_plugin?("vagrant-hostsupdater")
         config.hostsupdater.remove_on_suspend = true
         config.vm.hostname = "yii2.local"
-        config.hostsupdater.aliases = ["admin.yii2.local","phpmyadmin.yii2.local"]
+        config.hostsupdater.aliases = ["admin.yii2.local","phpmyadmin.yii2.local","adminer.yii2.local"]
     end
 
     if Vagrant.has_plugin?("vagrant-cachier")
         config.cache.scope = :box
     end
 
-    # Ansible provisioning (you can use this or Shell)
-    # To use Ansible provisioning you should habe Ansible installed on your host machine
-    # see here http://docs.ansible.com/intro_installation.html#installing-the-control-machine
-    config.vm.provision "ansible" do |ansible|
-        # should be equal to host name in Ansible hosts file
-        ansible.limit = "vagrant"
-        ansible.playbook = "provisioning/main.yml"
-        ansible.inventory_path = "provisioning/hosts"
-        # set to 'vvvv' for debug output in case of problems
-        ansible.verbose = false
-        ansible.host_key_checking = false
+    #
+    # Pre-provisioning
+    # Install Ansible on the VM to run main provisioning from the VM itself
+    #
+    $script = <<SCRIPT
+        sudo apt-add-repository ppa:rquillo/ansible -y
+        sudo apt-get update -y
+        sudo apt-get install ansible -y
+SCRIPT
+
+    #config.vm.provision "shell", inline: $script
+
+    #
+    # Run Ansible provisioning inside the VM
+    #
+    config.vm.provision "shell" do |sh|
+        sh.inline = "ansible-playbook /vagrant/provisioning/main.yml --inventory-file=/vagrant/provisioning/hosts --connection=local"
     end
 end

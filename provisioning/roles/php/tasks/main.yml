@@ -13,6 +13,7 @@
     - php5-gd
     - php5-mcrypt
     - php5-xdebug
+    - php5-memcached
   tags: php
 
 - name: configure PHP settings

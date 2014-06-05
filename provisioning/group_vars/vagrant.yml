@@ -17,5 +17,6 @@ vhosts:
   [
     { name: 'yii2.local', rootFolder: '/var/www/yii2-app-advanced/frontend/web'},
     { name: 'admin.yii2.local', rootFolder: '/var/www/yii2-app-advanced/backend/web'},
-    { name: 'phpmyadmin.yii2.local', rootFolder: '/usr/share/phpmyadmin'}
+    { name: 'phpmyadmin.yii2.local', rootFolder: '/usr/share/phpmyadmin'},
+    { name: 'adminer.yii2.local', rootFolder: '/usr/share/adminer'}
   ]

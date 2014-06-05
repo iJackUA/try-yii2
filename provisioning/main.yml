@@ -10,7 +10,13 @@
     - composer
     - phpredis
     - redis
+    - memcached
+    - sqlite
     - mysql
+    - postgresql
+    - mongodb
+    - phpmongo
     - phpmyadmin
+    - adminer
     - yii-advanced-project
     - sakila-db

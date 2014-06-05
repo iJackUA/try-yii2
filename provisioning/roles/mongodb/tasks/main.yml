@@ -1,0 +1,11 @@
+---
+- name: add MongoDB keyring
+  shell: sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+
+- name: add MongoDB repo
+  shell: echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+
+- name: install MongoDB
+  apt: pkg=mongodb-org state=latest update_cache=yes
+  notify: restart mongodb
+

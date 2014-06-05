@@ -1,0 +1,3 @@
+---
+- name: download Adminer
+  get_url: dest=/usr/share/adminer/index.php mode=0644 url=http://downloads.sourceforge.net/project/adminer/Adminer/Adminer%204.1.0/adminer-4.1.0.php?r=http%3A%2F%2Fwww.adminer.org%2F&ts=1401954975&use_mirror=garr

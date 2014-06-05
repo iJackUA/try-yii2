@@ -1,6 +1,6 @@
 ## Try Yii2 with Vagrant VM + Ansible provisioning
 
-> Tested on Ubuntu Linux host machine
+> Tested on Ubuntu Linux host machine. But should work on Windows host too as Ansible is being installed on VM, not on Host.
 
 ## Out of the box...
 
@@ -27,7 +27,7 @@ additional Vagrant modules (optional, but provide full automation) :
 * `vagrant plugin install vagrant-vbguest`
 * `vagrant plugin install vagrant-cachier`
 
-* [Ansible 1.6+](http://docs.ansible.com/intro_installation.html)
+> You don't need to have Ansible installed on host machine. It will be installed on VM and self-provisioning will be launched. So it is possible to run everything on Windows machine. 
 
 ### RUN
 
@@ -42,6 +42,7 @@ Ok, now if everything went fine you can access these Urls in your browser
 * [http://yii2.local/](http://yii2.local/)  -  frontend app
 * [http://admin.yii2.local/](http://admin.yii2.local/)  -  backend app
 * [http://phpmyadmin.yii2.local/](http://phpmyadmin.yii2.local/) - phpMyAdmin
+* [http://adminer.yii2.local/](http://adminer.yii2.local/) - Adminer (Lightweight and simple GUI manager for MySQL, PostgreSQL, SQLite, MS SQL, Oracle, SimpleDB, Elasticsearch and MongoDB)
 
 * Gii code generator should be called like this [http://yii2.local/index.php?r=gii](http://yii2.local/index.php?r=gii)
 
@@ -83,15 +84,15 @@ Press - Preview and then Generate
 
 #### Complete Ansible provisioning scripts for all software stack Yii2 works out of the box
 
-* MongoDB
-* PostgreSQL
-* phpPgAdmin
-* Sqlite
-* (Sorry no MSSql and Oracle :) )
-* Memcached
+* - MongoDB
+* - PostgreSQL
+* - Adminer
+* - Sqlite
+* - Memcached
 * Sphinx
 * Elastic Search
 * CUBRID
+
 
 #### Make option for yii-basic-template checkout
 

@@ -1,0 +1,4 @@
+---
+- name: setup Memcahced
+  apt: pkg=memcached state=latest
+  notify: restart memcached
