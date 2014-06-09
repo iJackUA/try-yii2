@@ -90,7 +90,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         sudo apt-get install ansible -y
 SCRIPT
 
-    #config.vm.provision "shell", inline: $script
+    config.vm.provision "shell", inline: $script
 
     #
     # Run Ansible provisioning inside the VM
