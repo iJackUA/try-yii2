@@ -10,7 +10,6 @@
     - make install chdir=/tmp/mongo-php-driver-{{ php_mongo_version }}
     - rm /tmp/mongo-php-driver-{{ php_mongo_version }} -R
     - rm /tmp/{{ php_mongo_version }}.tar.gz
-    - mv /etc/php5/mods-available/mongo.ini /etc/php5/mods-available/mongo.bkp
     - touch /etc/php5/mods-available/mongo.ini
     - echo "extension=mongo.so" > /etc/php5/mods-available/mongo.ini
     - ln -s /etc/php5/mods-available/mongo.ini /etc/php5/fpm/conf.d/mongo.ini creates=/etc/php5/fpm/conf.d/mongo.ini
