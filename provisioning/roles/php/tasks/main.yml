@@ -27,3 +27,7 @@
   notify:
     - restart phpfpm
   tags: php
+
+- name: chown PHP-FPM sessions dir
+  shell: chown vagrant:vagrant /var/lib/php5 -Rf
+  tags: php

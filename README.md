@@ -10,7 +10,12 @@
 * MySQL 5.5
 * Composer
 * phpMyAdmin 4.0
+* Adminer 4.1.0
 * Redis 2.8 ( + PhpRedis)
+* MongoDB 2.6.1 ( + php_mongo)
+* PostgreSQL 9.3
+* Sqlite 2.8.17
+* Memcached 1.4.14 ( + php5_memcached)
 * Imported [Sakila DB](http://dev.mysql.com/doc/sakila/en/) for playing around
 * And of course Yii2 Advanced Project template imported
 * Local IP loop on Host machine `/etc/hosts` and Virtual hosts in Nginx already set up too !
@@ -84,11 +89,6 @@ Press - Preview and then Generate
 
 #### Complete Ansible provisioning scripts for all software stack Yii2 works out of the box
 
-* - MongoDB
-* - PostgreSQL
-* - Adminer
-* - Sqlite
-* - Memcached
 * Sphinx
 * Elastic Search
 * CUBRID

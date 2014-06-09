@@ -1,1 +1,4 @@
 ---
+- name: ensure sqlite is installed
+  apt: pkg=sqlite state=installed
+  tags: sqlite

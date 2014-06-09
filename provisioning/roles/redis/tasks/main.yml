@@ -18,8 +18,13 @@
   user: name=redis system=yes home=/var/lib/redis shell=/bin/false
   tags: redis
 
-- name: create Redis config
-  shell: creates=/etc/redis/redis.conf mkdir /etc/redis && mkdir /var/log/redis/ -p && chown redis:redis  /var/log/redis/ -Rf /etc/redis -Rf
+- name: create Redis config folders
+  shell: "{{ item }}"
+  with_items:
+    - mkdir /etc/redis creates=/etc/redis/
+    - mkdir /var/log/redis/ -p creates=/var/log/redis/
+    - chown redis:redis /var/log/redis/ -Rf
+    - chown redis:redis /etc/redis -Rf
   tags: redis
 
 - name: copy Redis config
