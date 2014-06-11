@@ -1,0 +1,16 @@
+---
+- name: ensure Sphinx PPA repo (Stable)
+  apt_repository: repo='ppa:builds/sphinxsearch-rel21'
+  when: sphinx_repo_version == "stable"
+
+- name: ensure Sphinx PPA repo (Beta)
+  apt_repository: repo='ppa:builds/sphinxsearch-beta'
+  when: sphinx_repo_version == "beta"
+
+- name: ensure Sphinx PPA repo (Daily)
+  apt_repository: repo='ppa:builds/sphinxsearch-daily'
+  when: sphinx_repo_version == "daily"
+
+- name: ensure Sphinx is installed
+  action: apt pkg={{ item }} state=latest update_cache=yes
+  notify : restart sphinx

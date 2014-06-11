@@ -1,0 +1,2 @@
+- name: restart cubrid
+  service: name=cubrid state=restarted

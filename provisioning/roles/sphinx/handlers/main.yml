@@ -1,0 +1,2 @@
+- name: restart sphinx
+  service: name=sphinx state=restarted

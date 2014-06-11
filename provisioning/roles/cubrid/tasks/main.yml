@@ -1,0 +1,13 @@
+---
+- name: ensure CUBRID PPA repo
+  apt_repository: repo='ppa:cubrid/cubrid'
+
+- name: ensure CUBRID is installed
+  action: apt pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - cubrid
+    - cubrid-demodb
+  notify: restart cubrid
+
+
+# create demo db http://www.cubrid.org/wiki_tutorials/entry/create-the-demodb-cubrid-demo-database

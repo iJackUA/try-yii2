@@ -16,6 +16,9 @@
 * PostgreSQL 9.3
 * Sqlite 2.8.17
 * Memcached 1.4.14 ( + php5_memcached)
+* Sphinx 2.1
+* Elastic Search 1.2
+* CUBRID 9.3
 * Imported [Sakila DB](http://dev.mysql.com/doc/sakila/en/) for playing around
 * And of course Yii2 Advanced Project template imported
 * Local IP loop on Host machine `/etc/hosts` and Virtual hosts in Nginx already set up too !
@@ -89,11 +92,6 @@ Press - Preview and then Generate
 
 #### Complete Ansible provisioning scripts for all software stack Yii2 works out of the box
 
-* Sphinx
-* Elastic Search
-* CUBRID
-
-
-#### Make option for yii-basic-template checkout
+* Make option for yii-basic-template checkout
 
 ### Made by [Evgeniy Kuzminov](http://stdout.in). Thanks for support to [Anton Logvinenko](http://anton.logvinenko.name/).
