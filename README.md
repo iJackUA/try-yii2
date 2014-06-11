@@ -30,7 +30,7 @@
 * [Virtualbox 4.3+](https://www.virtualbox.org/) + VirtualBox Extension Pack
 *  [Vagrant 1.6+](http://www.vagrantup.com/)
 additional Vagrant modules (optional, but provide full automation) :  
-`vagrant plugin install vagrant-hostsupdater vagrant-vbguest vagrant-cachier`
+`$> vagrant plugin install vagrant-hostsupdater vagrant-vbguest vagrant-cachier`
 
 > You don't need to have Ansible installed on host machine. It will be installed on VM and self-provisioning will be launched. So it is possible to run everything on Windows machine. 
 
