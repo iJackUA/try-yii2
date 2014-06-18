@@ -28,9 +28,7 @@
 *  [Vagrant 1.6+](http://www.vagrantup.com/)
 additional Vagrant modules (optional, but provide full automation) :
 
-* `vagrant plugin install vagrant-hostsupdater`
-* `vagrant plugin install vagrant-vbguest`
-* `vagrant plugin install vagrant-cachier`
+* `vagrant plugin install vagrant-hostsupdater vagrant-vbguest vagrant-cachier`
 
 > You don't need to have Ansible installed on host machine. It will be installed on VM and self-provisioning will be launched. So it is possible to run everything on Windows machine. 
 
@@ -50,6 +48,19 @@ Ok, now if everything went fine you can access these Urls in your browser
 * [http://adminer.yii2.local/](http://adminer.yii2.local/) - Adminer (Lightweight and simple GUI manager for MySQL, PostgreSQL, SQLite, MS SQL, Oracle, SimpleDB, Elasticsearch and MongoDB)
 
 * Gii code generator should be called like this [http://yii2.local/index.php?r=gii](http://yii2.local/index.php?r=gii)
+
+**Note :** These local domains `.local` will be available on your host machine only if `hosts` file was modified correctly. It should 
+be done automatically by `vagrant-hostsupdater` plugin. But if url `http://yii2.local/` or other is not found by your browser - make sure
+your `hosts` file contain correct assignment of VM IP and local domains:  
+It should have such lines :
+```
+192.168.33.33 yii2.local
+192.168.33.33 admin.yii2.local
+192.168.33.33 phpmyadmin.yii2.local
+192.168.33.33 adminer.yii2.local
+```
+
+> File location. On Linux `/etc/hosts`. On Windows `%SystemRoot%\system32\drivers\etc\hosts`
 
 ### Let's make something
 

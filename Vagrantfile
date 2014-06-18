@@ -62,10 +62,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
         vb.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
         # By default set to 1, change it to amount of your CPUs
-        # vb.customize ["modifyvm", :id, "--cpus", "1" ]
+        vb.customize ["modifyvm", :id, "--cpus", "1" ]
         # Or uncomment line above for Automatic set VirtualBox guest CPU count to the number of host cores
         # WARNING ! Works on Linux Host ONLY
-         vb.customize ["modifyvm", :id, "--cpus", `grep "^processor" /proc/cpuinfo | wc -l`.chomp ]
+        # vb.customize ["modifyvm", :id, "--cpus", `grep "^processor" /proc/cpuinfo | wc -l`.chomp ]
     end
 
     # Set entries in hosts file
