@@ -51,6 +51,19 @@ Ok, now if everything went fine you can access these Urls in your browser
 
 * Gii code generator should be called like this [http://yii2.local/index.php?r=gii](http://yii2.local/index.php?r=gii)
 
+**Note :** These local domains `.local` will be available on your host machine only if `hosts` file was modified correctly. It should 
+be done automatically by `vagrant-hostsupdater` plugin. But if url `http://yii2.local/` or other is not found by your browser - make sure
+your `hosts` file contain correct assignment of VM IP and local domains:  
+It should have such lines :
+```
+192.168.33.33 yii2.local
+192.168.33.33 admin.yii2.local
+192.168.33.33 phpmyadmin.yii2.local
+192.168.33.33 adminer.yii2.local
+```
+
+> File location. On Linux `/etc/hosts`. On Windows `%SystemRoot%\system32\drivers\etc\hosts`
+
 ### Let's make something
 
 * [Go to Gii](http://yii2.local/index.php?r=gii)
