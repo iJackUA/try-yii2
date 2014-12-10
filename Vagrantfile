@@ -88,6 +88,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         sudo apt-add-repository ppa:rquillo/ansible -y
         sudo apt-get update -y
         sudo apt-get install ansible -y
+
+        cp /vagrant/provisioning/hosts /etc/ansible/hosts -f
+        chmod 666 /etc/ansible/hosts
 SCRIPT
 
     config.vm.provision "shell", inline: $script
@@ -96,6 +99,6 @@ SCRIPT
     # Run Ansible provisioning inside the VM
     #
     config.vm.provision "shell" do |sh|
-        sh.inline = "ansible-playbook /vagrant/provisioning/main.yml --inventory-file=/vagrant/provisioning/hosts --connection=local"
+        sh.inline = "ansible-playbook /vagrant/provisioning/main.yml --connection=local"
     end
 end
