@@ -16,6 +16,13 @@
     - php5-memcached
   tags: php
 
+- name: enable php modules
+  shell: php5enmod {{ item }}
+  with_items:
+    - mcrypt
+  notify:
+    - restart phpfpm
+
 - name: configure PHP settings
   template: src=php.ini dest=/etc/php5/fpm/conf.d/custom.ini
   notify:
