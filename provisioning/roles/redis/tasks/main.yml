@@ -19,13 +19,18 @@
   tags: redis
 
 - name: create Redis config folders
-  shell: "{{ item }}"
+  shell: mkdir {{ item }} -p creates="{{ item }}"
   with_items:
-    - mkdir /etc/redis creates=/etc/redis/
-    - mkdir /var/log/redis/ -p creates=/var/log/redis/
-    - chown redis:redis /var/log/redis/ -Rf
-    - chown redis:redis /etc/redis -Rf
+    - /etc/redis
+    - /var/log/redis/
   tags: redis
+  
+- name: set Redis folder permissions
+  shell: "chown redis:redis {{ item }} -Rf"
+  with_items:
+    - /etc/redis
+    - /var/log/redis/
+  tags: redis  
 
 - name: copy Redis config
   template: src=redis.conf.j2 dest=/etc/redis/redis.conf owner=redis group=redis mode=0644
