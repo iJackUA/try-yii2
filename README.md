@@ -26,7 +26,7 @@
 
 * [Virtualbox 4.3+](https://www.virtualbox.org/) + VirtualBox Extension Pack
 * [Vagrant 1.7+](http://www.vagrantup.com/)
-additional Vagrant modules will be installed automatically (vagrant-hostsupdater, vagrant-vbguest, vagrant-cachier)`
+additional Vagrant modules will be installed automatically (vagrant-hostmanager, vagrant-vbguest, vagrant-cachier)`
 
 > You don't need to have Ansible installed on host machine. It will be installed on VM and self-provisioning will be launched. So it is possible to run everything on Windows machine. 
 
@@ -35,6 +35,13 @@ additional Vagrant modules will be installed automatically (vagrant-hostsupdater
 * Clone this sources from Git
 * Run `vagrant up`.
 * It will start VM creation and Provisioning. Could take some time 15-30 min... Drink coffee and get back for complete virtual server with Yi2 project ready for play !
+
+#### Note for Windows OS users
+
+* Windows Firewall or any Antivirus software can cause some blocks on Vagrant start process. First of all to 'hosts' file modification. Be sure you turned them off (temporary) or set them up properly.
+* In case you get `default: warning: connection refused. Retying...` messages and Vagrant never boot successfully - it seems to be a VirtualBox issue. Try to install some older VBox version. It is tested to work on Virtual Box 4.3.6.  
+* On Windows 8 some issues are reported due to `Hyper-V` enabled. You should disable it if you experience issues with VirtualBox machines.
+* use Git Bash if possible to make `vagrant ssh` working out of the box.
 
 ### PLAY
 

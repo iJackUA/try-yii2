@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 # check and install required Vagrant plugins
-required_plugins = ["vagrant-hostsupdater", "vagrant-vbguest", "vagrant-cachier"]
+required_plugins = ["vagrant-hostmanager", "vagrant-vbguest", "vagrant-cachier"]
 required_plugins.each do |plugin|
 	if Vagrant.has_plugin?(plugin) then
 	    system "echo OK: #{plugin} already installed"
@@ -45,7 +45,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # the path on the guest to mount the folder. And the optional third
     # argument is a set of non-required options.
     config.vm.synced_folder "./", "/var/www"
-
     # Provider-specific configuration so you can fine-tune various
     # backing providers for Vagrant. These expose provider-specific options.
     # Example for VirtualBox:
@@ -59,19 +58,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
         vb.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
         # By default set to 1, change it to amount of your CPUs
-        vb.customize ["modifyvm", :id, "--cpus", "1" ]
+        vb.customize ["modifyvm", :id, "--cpus", "2" ]
         # Or uncomment line above for Automatic set VirtualBox guest CPU count to the number of host cores
         # WARNING ! Works on Linux Host ONLY
         # vb.customize ["modifyvm", :id, "--cpus", `grep "^processor" /proc/cpuinfo | wc -l`.chomp ]
     end
 
     # Set entries in hosts file
-    # https://github.com/cogitatio/vagrant-hostsupdater
-    if Vagrant.has_plugin?("vagrant-hostsupdater")
-        config.hostsupdater.remove_on_suspend = true
-        config.vm.hostname = "yii2.local"
-        config.hostsupdater.aliases = ["admin.yii2.local","phpmyadmin.yii2.local","adminer.yii2.local"]
-    end
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+    config.hostmanager.ignore_private_ip = false
+    config.hostmanager.include_offline = true
+    config.hostmanager.aliases =  ["yii2.local","admin.yii2.local","phpmyadmin.yii2.local","adminer.yii2.local"]
 
     if Vagrant.has_plugin?("vagrant-cachier")
         config.cache.scope = :box
@@ -93,6 +91,6 @@ SCRIPT
     # Run Ansible provisioning inside the VM
     #
     config.vm.provision "shell" do |sh|
-        sh.inline = "ansible-playbook /vagrant/provisioning/main.yml --inventory-file=/vagrant/provisioning/hosts --connection=local"
+        sh.inline = "ansible-playbook /vagrant/provisioning/main.yml -i 'vagrant,' --connection=local"
     end
 end
