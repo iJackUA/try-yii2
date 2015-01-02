@@ -4,11 +4,18 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    # All Vagrant configuration is done here. The most common configuration
-    # options are documented and commented below. For a complete reference,
-    # please see the online documentation at vagrantup.com.
+# check and install required Vagrant plugins
+required_plugins = ["vagrant-hostsupdater", "vagrant-vbguest", "vagrant-cachier"]
+required_plugins.each do |plugin|
+	if Vagrant.has_plugin?(plugin) then
+	    system "echo OK: #{plugin} already installed"
+	else
+	    system "echo Not installed required plugin: #{plugin} ..."
+		system "vagrant plugin install #{plugin}"
+	end
+end
 
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Every Vagrant virtual environment requires a box to build off of.
     config.vm.box = "Ubuntu14.04"
 
@@ -19,16 +26,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Uncomment this line and remove config.vm.box_url above
     # if you need to use 32 bit of Ubuntu
     # config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box"
-
-    # Disable automatic box update checking. If you disable this, then
-    # boxes will only be checked for updates when the user runs
-    # `vagrant box outdated`. This is not recommended.
-    # config.vm.box_check_update = false
-
-    # Create a forwarded port mapping which allows access to a specific port
-    # within the machine from a port on the host machine. In the example below,
-    # accessing "localhost:8080" will access port 80 on the guest machine.
-    # config.vm.network "forwarded_port", guest: 80, host: 8080
 
     # Create a private network, which allows host-only access to the machine
     # using a specific IP.
