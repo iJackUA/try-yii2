@@ -1,8 +1,8 @@
 - name: download PhpRedis
-  shell: chdir=/tmp creates=/tmp/phpredis.zip wget https://github.com/nicolasff/phpredis/zipball/master -O phpredis.zip
+  shell: chdir=/tmp creates=/tmp/phpredis.zip wget https://codeload.github.com/phpredis/phpredis/zip/master -O phpredis.zip
 
 - name: compile PhpRedis
-  shell: chdir=/tmp creates=/tmp/nicolasff-phpredis/modules/redis.so unzip /tmp/phpredis.zip && mv /tmp/nicolasff-phpredis-* /tmp/nicolasff-phpredis && cd /tmp/nicolasff-phpredis && phpize && ./configure && make && make install
+  shell: chdir=/tmp creates=/tmp/phpredis-master/modules/redis.so unzip /tmp/phpredis.zip && cd /tmp/phpredis-master && phpize && ./configure && make && make install
 
 - name: detect minor php version
   shell: chdir=/tmp php -v | grep -Eow '^PHP [^ ]+'| awk '{ print $2 }'| awk -F '.' '{print $2}'
