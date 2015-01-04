@@ -109,12 +109,11 @@ Press - Preview and then Generate
 
 ## TODO :
 
-#### Complete Ansible provisioning scripts for all software stack Yii2 works out of the box
-
 * Sphinx
 * Elastic Search
 * CUBRID
 * yii-basic-template checkout (http://basic.yii2.local)
 * automatic Model / CRUD generation via Cli command
+* a way to specify GitHub Token to prevent Composer requests limitation
 
 ### Made by [Evgeniy Kuzminov](http://stdout.in). Thanks for support to [Anton Logvinenko](http://anton.logvinenko.name/).
