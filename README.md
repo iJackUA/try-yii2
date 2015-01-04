@@ -55,7 +55,7 @@ Ok, now if everything went fine you can access these Urls in your browser
 * Gii code generator should be called like this [http://yii2.local/index.php?r=gii](http://yii2.local/index.php?r=gii)
 
 **Note :** These local domains `.local` will be available on your host machine only if `hosts` file was modified correctly. It should 
-be done automatically by `vagrant-hostsupdater` plugin. But if url `http://yii2.local/` or other is not found by your browser - make sure
+be done automatically by `vagrant-hostsmanager` plugin. But if url `http://yii2.local/` or other is not found by your browser - make sure
 your `hosts` file contain correct assignment of VM IP and local domains:  
 It should have such lines :
 ```
@@ -108,8 +108,7 @@ Press - Preview and then Generate
 * Sphinx
 * Elastic Search
 * CUBRID
-
-
-#### Make option for yii-basic-template checkout
+* yii-basic-template checkout (http://basic.yii2.local)
+* automatic Model / CRUD generation via Cli command
 
 ### Made by [Evgeniy Kuzminov](http://stdout.in). Thanks for support to [Anton Logvinenko](http://anton.logvinenko.name/).
