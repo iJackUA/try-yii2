@@ -1,4 +1,4 @@
-hostname: try.yii2
+hostname: try-yii2
 
 php_error_reporting: E_ALL
 php_display_errors: On

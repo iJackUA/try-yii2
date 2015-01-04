@@ -1,7 +1,5 @@
 ## Try Yii2 with Vagrant VM + Ansible provisioning
 
-> Tested on Ubuntu Linux host machine. But should work on Windows host too as Ansible is being installed on VM, not on Host.
-
 ## Out of the box...
 
 * Ubuntu 14.04 64 bit ( + bulk of system soft like `mc`, `curl`, etc.)
@@ -27,7 +25,9 @@
 * [Virtualbox 4.3+](https://www.virtualbox.org/) + VirtualBox Extension Pack
 * [Vagrant 1.7+](http://www.vagrantup.com/)
 additional Vagrant modules will be installed automatically (vagrant-hostmanager, vagrant-vbguest, vagrant-cachier)`
-
+* Install Vagrant plugins  
+`vagrant plugin install vagrant-hostmanager vagrant-vbguest vagrant-cachier`  
+(these plugins will be checked and installed automatically, but `vagrant up` will fail on the first run, just re-run it if you'll get ` Unknown configuration section` error)
 > You don't need to have Ansible installed on host machine. It will be installed on VM and self-provisioning will be launched. So it is possible to run everything on Windows machine. 
 
 ### RUN
@@ -35,6 +35,12 @@ additional Vagrant modules will be installed automatically (vagrant-hostmanager,
 * Clone this sources from Git
 * Run `vagrant up`.
 * It will start VM creation and Provisioning. Could take some time 15-30 min... Drink coffee and get back for complete virtual server with Yi2 project ready for play !
+
+### Supported Host OS :
+
+* **Ubuntu-based Linux 14.04+** - main tests and development, works the best 
+* **Windows 7 Home** - rarely tested to bring some compatibility, but additional Your experience with Vagrant on Windows could be required
+* **MacOS** - not tested by maintainer, but assumed to work fine as there is no know big issues with Vagrant on MacOS 
 
 #### Note for Windows OS users
 
