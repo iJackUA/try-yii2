@@ -13,5 +13,10 @@ return [
             'viewPath' => '@common/mail',
             'useFileTransport' => true,
         ],
+        'request' => [
+            'enableCookieValidation' => true,
+            'enableCsrfValidation' => true,
+            'cookieValidationKey' => 'I-love-Yii2',
+        ],
     ],
 ];

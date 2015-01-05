@@ -35,6 +35,7 @@ additional Vagrant modules will be installed automatically (vagrant-hostmanager,
 * Clone this sources from Git
 * Run `vagrant up`.
 * It will start VM creation and Provisioning. Could take some time 15-30 min... Drink coffee and get back for complete virtual server with Yi2 project ready for play !
+* If you got an error regarding Composer and GitHub API requests limitation during provisioning - go to `/provisioning/main.yml`, uncomment var and add your GitHub oAuth token into `github_oauth_token` variable
 
 ### Supported Host OS :
 
@@ -114,6 +115,5 @@ Press - Preview and then Generate
 * CUBRID
 * yii-basic-template checkout (http://basic.yii2.local)
 * automatic Model / CRUD generation via Cli command
-* a way to specify GitHub Token to prevent Composer requests limitation
 
 ### Made by [Evgeniy Kuzminov](http://stdout.in). Thanks for support to [Anton Logvinenko](http://anton.logvinenko.name/).
